@@ -14,10 +14,6 @@
         <form class=" ">
             <p class="text-2xl text-center font-bold text-black-500 mb-6 mt-2 underline">CRUD ASSIGMENT</p>
             <table class="">
-                <!-- <tr>
-                    <td></td>
-                    <td> <input type="radio" name="gender">Mr. <input type="radio" name="gender">Mrs. <input type="radio" name="gender">Ms. </td>
-                <tr> -->
                 <tr>
                     <td><label for="" >First Name</label></td>
                     <td> <input type="text" placeholder="Full Name" id="first" class="border border-gray-300" required><br> </td>
@@ -38,12 +34,8 @@
                     <td> <input type="email" id="email" class="border border-gray-300" required><br> </td>
                 </tr>
                
-                <!-- <tr>
-                    <td><label for="">E-Mail</label></td>
-                    <td><input type="text" id="mail" class="border  border-gray-300"><br> </td>
-                </tr> -->
                 <tr>
-                    <td><label for="">Mobile No.</label></td>
+                    <td><label for="">Mobile No</label></td>
                     <td><input type="text" placeholder="+91" id="mobile" class="border border-gray-300" required><br> </td>
                 </tr>
 
@@ -61,13 +53,15 @@
           <button onclick="cleared()" class="bg-sky-600 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... m-4 p-2 rounded-md w-24">
             DELETE DATA
           </button>
+          <button onclick="resetData()" class="bg-sky-600 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... m-4 p-2 rounded-md ">
+            RESET
+          </button>
     </div>
     <div class="bg-slate-200 flex justify-between">
-         <table class="table-auto">     <!--id="table" -->
+         <table class="table-auto" id="tableData">     
             <thead>
                 <tr class="">
                     <th scope="col" class="border border-red-800 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">S No.</th>
-                    <!-- <th scope="col">item</th> -->
                     <th scope="col" class="border border-red-800 hover:bg-gradient-to-r from-green-400 to-blue-500 ">FirtName</th>
                     <th scope="col" class="border border-red-800 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">LastName</th>
                     <th scope="col" class="border border-red-800 hover:bg-gradient-to-r from-green-400 to-blue-500  ">E-Mail</th>
@@ -78,23 +72,13 @@
             <tbody id="table">
                 <tr>
                     <th scope="row">1</th>
-                    <!-- <td>first</td>
-                        <td>Last</td>
-                        <td>Address</td>
-                        <td>Mobile</td> -->
-                        <!-- <td>second</td> -->
-                        <!-- <td class="bg-slate-50 flex justify-end mx-96"><button>delete</button></td> -->
-                        
-                    <!-- <button class="bg-sky-600 hover:bg-sky-700 ...m-4 rounded-md w-24 justify-right">
-                        Delete
-                      </button> -->
                 </tr>
             </tbody>
         </table>
     </div>
-<!-- 
-    </form> -->
-    <script>
+
+    </form> 
+     <script> 
         function getAndUpdate(){
             console.log("arnab")
             first=document.getElementById("first").value;
@@ -142,7 +126,8 @@
                     <td>${element [2]}</td>
                     <td>${element [3]}</td>
                     <td>${element [4]}</td>
-                    <td class="bg-slate-50 flex justify-end mx-96 hover:bg-red-500 "><button onclick="deleted(${index})">Delete</button></td>
+                    
+                    <td class="bg-slate-50 flex justify-end mx-96 hover:bg-red-500 "><button onclick="update">Edit</button> <td class="bg-slate-50 flex justify-end mx-96 hover:bg-red-500 "><button onclick="deleted(${index})">Delete</button></td>
                     
                 </tr>`
                 
@@ -170,7 +155,72 @@
             localStorage.clear()
             update()
         }
+
+        function resetData(){
+            document.getElementById('First Name').value = '';
+            document.getElementById('Last Name').value = '';
+            document.getElementById('Address').value = '';
+            document.getElementById('E-Mail').value = '';
+            document.getElementById('Mobile No').value = '';
+        }
+
     </script>
+    <!-- <script>
+
+        var TableCode = null;
+        function onFormSubmit(){
+            event.preventDefault();
+
+            let formData = readFormData();
+
+            if()
+        }
+
+        // RETRIVE OF THE DATA:
+
+        function readFormData(){
+
+            let formData = {};
+
+            formData["first"] = document.getElementById("First Name").value;
+            formData["last"] = document.getElementById("Last Name").value;
+            formData["address"] = document.getElementById("Address").value;
+            formData["email"] = document.getElementById("E-Mail").value;
+            formData["mobile"] = document.getElementById("Mobile No").value;
+
+            return formData;
+        }
+
+        // INSERT DATA:
+
+        function insertData(data){
+
+            let table = document.getElementById("tableData").getElementsByTagName("tbody")[0];
+
+            let newRow = table.insertRow(table.length);
+
+            let addElement = newRow.insertCell(0);
+            addElement.innerHTML = data.first;
+
+            let addElement1 = newRow.insertCell(1);
+            addElement1.innerHTML = data.last;
+
+            let addElement2 = newRow.insertCell(2);
+            addElement2.innerHTML = data.address;
+
+            let addElement3 = newRow.insertCell(3);
+            addElement3.innerHTML = data.email;
+
+            let addElement4 = newRow.insertCell(4);
+            addElement4.innerHTML = data.mobile;
+
+            let addElement5 = newRow.insertCell(5);
+            addElement5.innerHTML = `<button>Edit</button><button>Delete<button>`;
+
+        }
+
+
+    </script> -->
 
 </body>
 <!-- <div class=flex justify-center mx-12 p-12>
@@ -179,4 +229,8 @@ Delete
 </button>
     </div> -->
 
+
+
+
+    <!-- <td class="bg-slate-50 flex justify-end mx-96 hover:bg-red-500 "><button onclick="update(${index})">Edit Data</button></td> -->
 </html>
